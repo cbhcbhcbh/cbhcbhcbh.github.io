@@ -150,6 +150,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sublime-配置-java运行环境" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/22/sublime-配置-java运行环境/">sublime配置java运行环境</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/22/sublime-配置-java运行环境/" class="archive-article-date">
+  	<time datetime="2019-01-22T09:18:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>之前配置的java运行环境出了一点小状况，不能编译出class文件，只能重新配置了。</p>
+<h2 id="新建built文件"><a href="#新建built文件" class="headerlink" title="新建built文件"></a>新建built文件</h2><p>首先在sublime上点击<code>Tools---Build System---New Build System</code>,然后得到一个JSON文件,向其中添加代码：<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"cmd"</span>: [<span class="string">"runJava.bat"</span>, <span class="string">"$file"</span>],</span><br><span class="line">	<span class="attr">"file_regex"</span>: <span class="string">"^(...*?):([0-9]*):?([0-9]*)"</span>,</span><br><span class="line">	<span class="attr">"selector"</span>: <span class="string">"source.java"</span>,</span><br><span class="line">	<span class="attr">"encoding"</span>: <span class="string">"UTF-8"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后Ctrl+S,命名保存在packages里。</p>
+<h2 id="新建bat文件"><a href="#新建bat文件" class="headerlink" title="新建bat文件"></a>新建bat文件</h2><p>首先在桌面上新建一个文本文档，将它的后缀名改为.bat,然后用sublime打开，写入代码：<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">ECHO</span> OFF</span><br><span class="line"><span class="built_in">cd</span> %~dp1</span><br><span class="line"><span class="built_in">ECHO</span> Compiling %~nx1.......</span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">EXIST</span> %~n1.class (</span><br><span class="line"><span class="built_in">DEL</span> %~n1.class</span><br><span class="line">)</span><br><span class="line">javac %~nx1</span><br><span class="line"><span class="keyword">IF</span> <span class="keyword">EXIST</span> %~n1.class (</span><br><span class="line"><span class="built_in">ECHO</span> -----------OUTPUT-----------</span><br><span class="line">java %~n1</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<p>保存文件，将其存入jdk的bin目录（C:\Program Files\Java\jdk-10.0.2\bin）</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>新建一个java文档，代码：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HelloWorld</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> (<span class="params">String[] args</span>)</span> &#123;</span><br><span class="line">        System.<span class="keyword">out</span>.println(<span class="string">"Hello World!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Ctrl+Shift+B，检测结果。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">IT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/22/sublime-配置-java运行环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-读书的目的" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -704,7 +784,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 陈博浩
+    		&copy; 2019 陈博浩
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
